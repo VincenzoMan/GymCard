@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "619734836187",
+    "firebase_url": "https://palestra-1fa45-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "palestra-1fa45",
+    "storage_bucket": "palestra-1fa45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619734836187:android:659ae0b07fad9befbffdfe",
+        "android_client_info": {
+          "package_name": "com.vp7.gym"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2zkNgFH5fQGaUAZ97rBtmNPp66dUYaqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619734836187:android:b9311cde57a87e36bffdfe",
+        "android_client_info": {
+          "package_name": "com.vp7.gymcard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2zkNgFH5fQGaUAZ97rBtmNPp66dUYaqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
