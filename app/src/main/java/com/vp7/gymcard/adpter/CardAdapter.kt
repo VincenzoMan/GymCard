@@ -10,7 +10,7 @@ import com.squareup.picasso.Picasso
 import com.vp7.gymcard.ExerciseInfo
 import com.vp7.gymcard.R
 
-class CardAdapter(private val data: List<ExerciseInfo>) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class CardAdapter(private var data: MutableList<ExerciseInfo>, private val onSave: (ResultData) -> Unit) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -20,16 +20,43 @@ class CardAdapter(private val data: List<ExerciseInfo>) : RecyclerView.Adapter<C
     }
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
-        // Personalizza il contenuto della card
         val item = data[position]
+        val rep1Value = holder.itemView.findViewById<TextView>(R.id.rep_1_value)
+        val rep2Value = holder.itemView.findViewById<TextView>(R.id.rep_2_value)
+        val rep3Value = holder.itemView.findViewById<TextView>(R.id.rep_3_value)
         Picasso.get()
             .load(item.image)
             .into(holder.itemView.findViewById<ImageView>(R.id.imageView))
-         holder.itemView.findViewById<TextView>(R.id.name_exercise).text = item.name
-        holder.itemView.findViewById<TextView>(R.id.rep_exercise).text = item.numRepDefault.toString()
+        holder.itemView.findViewById<TextView>(R.id.name_exercise).text = item.name
+        item.numRepDefault?.let {
+            holder.itemView.findViewById<TextView>(R.id.rep_1).text = item.numRepDefault[0].toString()
+            holder.itemView.findViewById<TextView>(R.id.rep_2).text = item.numRepDefault[1].toString()
+            holder.itemView.findViewById<TextView>(R.id.rep_3).text = item.numRepDefault[2].toString()
+            if( item.result.isNotEmpty()) {
+                item.result.forEach {
+                    when(it.numSeries) {
+                        1 -> rep1Value.text = it.result
+                        2 -> rep2Value.text = it.result
+                        3 -> rep3Value.text = it.result
+                    }
+                }
+            }
+            holder.itemView.findViewById<TextView>(R.id.save_button).setOnClickListener {
+                val rep1 = rep1Value.text.toString()
+                val rep2 = rep2Value.text.toString()
+                val rep3 = rep3Value.text.toString()
+                onSave.invoke(ResultData(listOf(rep1,rep2,rep3), item.id, item.day))
+            }
+        }
+
     }
 
-
+    fun clear() {
+        val size = data.size
+        data.clear()
+        notifyItemRangeRemoved(0, size)
+    }
 
     override fun getItemCount() = data.size
 }
+class ResultData(val kg: List<String>, val exId: Int, val day: Int)

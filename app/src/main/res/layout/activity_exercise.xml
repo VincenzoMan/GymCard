@@ -7,16 +7,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ExerciseActivity">
-<LinearLayout
-    android:id="@+id/layout"
+
+    <LinearLayout
+        android:id="@+id/layout_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/week1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="week 1" />
+
+        <Button
+            android:id="@+id/week2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="week 2" />
+
+        <Button
+            android:id="@+id/week3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="week 3" />
+        <Button
+            android:id="@+id/week4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="week 4" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+    android:id="@+id/layout_day"
     android:layout_width="match_parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/layout_week"
 
     android:orientation="horizontal"
     android:layout_height="wrap_content">
-    <Button
+
+        <Button
         android:id="@+id/day1"
         android:layout_width="wrap_content"
         android:layout_margin="10dp"
@@ -39,6 +85,15 @@
         android:text="Giorno 3" />
 
 </LinearLayout>
+    <TextView
+        android:id="@+id/day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_day"
+        app:layout_constraintBottom_toTopOf="@id/recycle"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 
 <androidx.recyclerview.widget.RecyclerView
@@ -46,8 +101,9 @@
     android:layout_width="match_parent"
     app:layout_constraintBottom_toBottomOf="parent"
 
-    app:layout_constraintTop_toBottomOf="@id/layout"
+    app:layout_constraintTop_toBottomOf="@id/day"
     android:layout_height="0dp"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
